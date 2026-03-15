@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.git-log-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  min-height: 100vh;
+}
+
+/* ─── TIMELINE SPINE ─── */
+.timeline-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #800020;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* ─── TIMELINE EVENTS ─── */
+.timeline-events {
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-event {
+  display: flex;
+  margin-bottom: 80px;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.timeline-event:nth-child(1) { animation-delay: 0.1s; }
+.timeline-event:nth-child(2) { animation-delay: 0.2s; }
+.timeline-event:nth-child(3) { animation-delay: 0.3s; }
+.timeline-event:nth-child(4) { animation-delay: 0.4s; }
+.timeline-event:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left side (50% width) */
+.timeline-event-left {
+  width: 50%;
+  text-align: right;
+  padding-right: 40px;
+}
+
+/* Right side (50% width) */
+.timeline-event-right {
+  width: 50%;
+  padding-left: 40px;
+}
+
+/* ─── NODE ─── */
+.timeline-node {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #800020;
+  border-radius: 50%;
+  background-color: transparent;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.timeline-event.active .timeline-node {
+  width: 28px;
+  height: 28px;
+  background-color: #800020;
+  box-shadow: 0 0 20px rgba(128, 0, 32, 0.8);
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* ─── DATE ─── */
+.timeline-date {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* ─── COMMAND LINE BOX ─── */
+.command-box {
+  background-color: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.95rem;
+  color: #b0b0b0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.command-box code {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+}
+
+.command-checkmark {
+  color: #00d084;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.command-tag {
+  background-color: rgba(128, 0, 32, 0.3);
+  color: #ff6b6b;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  border: 1px solid rgba(128, 0, 32, 0.6);
+}
+
+/* ─── EVENT DETAILS ─── */
+.event-details {
+  margin-top: 16px;
+}
+
+.event-header {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.event-header-label {
+  color: #999999;
+  font-weight: 400;
+}
+
+.event-header-value {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.event-description {
+  font-size: 0.95rem;
+  color: #b0b0b0;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.event-description-label {
+  color: #999999;
+  font-weight: 400;
+}
+
+.event-description-text {
+  color: #e0e0e0;
+}
+
+/* ─── TECH ICON ─── */
+.tech-icon {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.tech-icon svg {
+  width: 80px;
+  height: 80px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .git-log-container {
+    padding: 40px 20px;
+  }
+
+  .timeline-spine {
+    left: 30px;
+  }
+
+  .timeline-event {
+    flex-direction: column;
+    margin-bottom: 60px;
+  }
+
+  .timeline-event-left,
+  .timeline-event-right {
+    width: 100%;
+    text-align: left;
+    padding: 0 0 0 80px;
+  }
+
+  .timeline-node {
+    left: 30px;
+  }
+
+  .timeline-date {
+    font-size: 1.4rem;
+  }
+
+  .command-box {
+    font-size: 0.85rem;
+    padding: 12px 14px;
+  }
+
+  .tech-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+}
