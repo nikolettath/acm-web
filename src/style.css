@@ -1,14 +1,11 @@
-
 :root {
-  --color-space-black: #0c0505; /* Ένα πολύ σκούρο ζεστό μαύρο, όχι "νεκρό" μαύρο */
-  --color-acm-red: #cc0000; /* Πιο φωτεινό και ζωντανό κόκκινο (αντί για #8b0000) */
-  --color-acm-bright: #ff4d4d; /* Ακόμα πιο φωτεινό για τις λάμψεις */
+  --color-space-black: #080303; 
+  --color-acm-red: #cc0000; 
+  --color-acm-bright: #ff6666; 
   --text-primary: #ffffff;
-  --text-dim: rgba(255, 255, 255, 0.75); /* Λίγο πιο φωτεινό γκρι για τα κείμενα */
-  
+  --text-dim: rgba(255, 255, 255, 0.8);
   --font-sans: 'Lexend', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
   --transition: all 0.3s ease;
 }
 
@@ -17,8 +14,9 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--color-space-black);background-image: linear-gradient(rgba(25, 5, 5, 0.3), rgba(15, 2, 2, 0.4)), url('/circuit_bg.svg'); 
-  background-size: cover;
+  background-color: var(--color-space-black);
+  background-image: linear-gradient(rgba(10, 2, 2, 0.75), rgba(5, 1, 1, 0.85)), url('/circuit_bg.svg'); 
+  
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -53,7 +51,6 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; }
 section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 auto; }
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
 
 /* ─── NAVIGATION ─── */
 #navbar {
@@ -96,7 +93,7 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
   box-shadow: 0 10px 20px rgba(212, 83, 79, 0.4);
 }
 
-/* ─── GLASSMORPHISM CARDS (About & Actions) ─── */
+/* ─── GLASSMORPHISM CARDS (About Section) ─── */
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
@@ -107,8 +104,6 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
   position: relative;
   overflow: hidden;
 }
-.card-small { padding: 2rem; border-radius: 1.5rem; transition: transform 0.3s ease, border-color 0.3s ease; }
-.card-small:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
 
 .relative-container { position: relative; }
 .orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; opacity: 0.5; }
@@ -164,6 +159,101 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 .status-check { color: #10b981; font-weight: 900; }
 .status-tag { color: #ff4d4d; background: rgba(212, 83, 79, 0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(212, 83, 79, 0.3); }
 
+
+/* ─── STACKED CARDS CAROUSEL*/
+.stacked-cards-container {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 1000px;
+  perspective: 1000px; 
+}
+
+.cards-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.stacked-card {
+  position: absolute;
+  width: 100%;
+  padding: 2.5rem;
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  will-change: transform, opacity;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── CLASS STATES ΠΟΥ ΕΛΕΓΧΕΙ ΤΟ JS ─── */
+.card-active {
+  transform: translateX(0) scale(1) rotateY(0);
+  opacity: 1;
+  z-index: 20;
+  pointer-events: auto; /* Μόνο η μεσαία κάρτα πατιέται */
+}
+
+.card-left {
+  transform: translateX(-70%) scale(0.8) rotateY(15deg);
+  opacity: 0.4;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.card-right {
+  transform: translateX(70%) scale(0.8) rotateY(-15deg);
+  opacity: 0.4;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ─── ΚΟΥΜΠΙΑ ΚΑΙ INDICATORS ─── */
+.nav-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 30;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: white;
+  width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: var(--transition);
+}
+.nav-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: white; transform: translateY(-50%) scale(1.1); }
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+@media (min-width: 769px) { .prev-btn { left: 2rem; } .next-btn { right: 2rem; } }
+
+.card-indicators { display: flex; justify-content: center; gap: 10px; margin-top: -1rem; z-index: 20; position: relative;}
+.indicator { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); border: none; cursor: pointer; transition: all 0.3s ease; }
+.indicator.active { width: 32px; border-radius: 4px; background: white; }
+
+/* ─── ΕΣΩΤΕΡΙΚΑ ΣΤΥΛ ΚΑΡΤΑΣ (Ίδια με πριν) ─── */
+.card-glow { position: absolute; top: 0; right: 0; width: 140px; height: 140px; border-radius: 50%; filter: blur(55px); opacity: 0.08; transition: opacity 0.4s; pointer-events: none; }
+.stacked-card.card-active:hover .card-glow { opacity: 0.2; }
+.glow-white { background: linear-gradient(to bottom right, #ffffff, #aaaaaa); }
+.glow-dark { background: linear-gradient(to bottom right, #777777, #111111); }
+.icon-box { width: 56px; height: 56px; border-radius: 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; transition: border-color 0.4s; }
+.stacked-card.card-active:hover .icon-box { border-color: rgba(255,255,255,0.5); }
+.icon-box svg { color: white; transition: transform 0.4s; }
+.stacked-card.card-active:hover .icon-box svg { transform: scale(1.1); }
+.stacked-card h3 { font-size: 1.5rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.stacked-card p { flex-grow: 1; margin-bottom: 2.5rem; font-weight: 300; }
+.card-link { display: flex; align-items: center; gap: 12px; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.4); text-transform: uppercase; transition: color 0.4s; cursor: pointer; }
+.stacked-card.card-active:hover .card-link { color: white; }
+.link-line { width: 32px; height: 2px; background: rgba(255,255,255,0.2); transition: width 0.4s, background 0.4s; }
+.stacked-card.card-active:hover .link-line { width: 48px; background: white; }
+
+/* --- Mobile Fix --- */
+@media (max-width: 768px) {
+  .card-left { transform: translateX(-40%) scale(0.8) rotateY(0); }
+  .card-right { transform: translateX(40%) scale(0.8) rotateY(0); }
+}
 /* ─── JOIN SECTION ─── */
 .join-section { display: flex; justify-content: space-between; align-items: center; gap: 4rem; flex-wrap: wrap; }
 .join-content { flex: 1; min-width: 300px; }

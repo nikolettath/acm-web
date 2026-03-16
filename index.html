@@ -19,7 +19,9 @@
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#events">Timeline</a></li> <li><a href="#actions">Actions</a></li> </ul>
+        <li><a href="#events">Timeline</a></li> 
+        <li><a href="#actions">Actions</a></li> 
+      </ul>
       <a href="#join" class="nav-cta glow-button">Join Us</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -79,22 +81,57 @@
 
   <section id="actions">
     <div class="section-inner reveal">
-      <p class="section-label text-center font-mono">ΟΙ ΕΠΕΡΧΟΜΕΝΕΣ ΕΚΔΗΛΩΣΕΙΣ ΤΗΣ ΟΜΑΔΑΣ ΜΑΣ</p>
-      <h2 class="text-center mb-5">ΟΙ <span class="accent glow-text">ΔΡΑΣΕΙΣ</span> ΜΑΣ</h2>
+      <div class="text-center mb-5">
+        <p class="section-label font-mono">ΟΙ ΕΠΕΡΧΟΜΕΝΕΣ ΕΚΔΗΛΩΣΕΙΣ ΤΗΣ ΟΜΑΔΑΣ ΜΑΣ</p>
+        <h2>ΟΙ <span class="accent glow-text">ΔΡΑΣΕΙΣ</span> ΜΑΣ</h2>
+      </div>
       
-      <div class="stats-row">
-        <div class="glass-card card-small text-center">
-          <h3>Workshops</h3>
-          <p class="font-mono text-dim">Coming soon...</p>
+      <div class="stacked-cards-container">
+        <button class="nav-btn prev-btn" aria-label="Προηγούμενη κάρτα">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <div class="cards-wrapper">
+          <div class="stacked-card glass-card group card-active" data-index="0">
+            <div class="card-glow glow-white"></div>
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3>Workshops</h3>
+            <p class="text-dim">Coming soon...</p>
+            <div class="card-link font-mono">ΜΑΘΕ ΠΕΡΙΣΣΟΤΕΡΑ<div class="link-line"></div></div>
+          </div>
+
+          <div class="stacked-card glass-card group card-right" data-index="1">
+            <div class="card-glow glow-dark"></div>
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"></path><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"></path></svg>
+            </div>
+            <h3>Coding Sessions</h3>
+            <p class="text-dim">Coming soon...</p>
+            <div class="card-link font-mono">ΜΑΘΕ ΠΕΡΙΣΣΟΤΕΡΑ<div class="link-line"></div></div>
+          </div>
+
+          <div class="stacked-card glass-card group card-left" data-index="2">
+            <div class="card-glow glow-white"></div>
+            <div class="icon-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3>Networking</h3>
+            <p class="text-dim">Coming soon...</p>
+            <div class="card-link font-mono">ΜΑΘΕ ΠΕΡΙΣΣΟΤΕΡΑ<div class="link-line"></div></div>
+          </div>
         </div>
-        <div class="glass-card card-small text-center">
-          <h3>Coding Sessions</h3>
-          <p class="font-mono text-dim">Coming soon...</p>
-        </div>
-        <div class="glass-card card-small text-center">
-          <h3>Networking</h3>
-          <p class="font-mono text-dim">Coming soon...</p>
-        </div>
+
+        <button class="nav-btn next-btn" aria-label="Επόμενη κάρτα">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <div class="card-indicators">
+        <button class="indicator active" data-index="0"></button>
+        <button class="indicator" data-index="1"></button>
+        <button class="indicator" data-index="2"></button>
       </div>
     </div>
   </section>

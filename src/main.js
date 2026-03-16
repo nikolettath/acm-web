@@ -3,10 +3,11 @@ import './style.css';
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initTimeline();     
+  initStackedCards(); 
   initScrollReveal(); 
 });
 
-// ─── NAVIGATION & ACCESSIBILITY ─── //
+//NAVIGATION & ACCESSIBILITY //
 function initNavigation() {
   const navbar = document.getElementById("navbar");
   const hamburger = document.getElementById("hamburger");
@@ -50,7 +51,7 @@ function initNavigation() {
   });
 }
 
-// ─── SCROLL REVEAL (Intersection Observer) ─── //
+//SCROLL REVEAL//
 function initScrollReveal() {
   const revealElements = document.querySelectorAll(".reveal");
   if (revealElements.length === 0) return; // Safeguard
@@ -67,32 +68,31 @@ function initScrollReveal() {
   revealElements.forEach((el) => revealObserver.observe(el));
 }
 
-// ─── TIMELINE GENERATION (Centered Git Terminal Style) ─── //
+//TIMELINE //
 function initTimeline() {
   const events = [
     { 
-      date: '2024-10-15', 
+      date: 'Νοέμβριος 2025', 
       cmd: 'Chapter Re-Chartered', 
       title: 'ACM Chapter Renewal', 
-      desc: 'Following a successful audit, our ACM chapter was renewed. We grew to 50 active members and hosted our first Linux Installfest.' 
+      desc: 'H επανίδρυση του ACM AUEB Student Chapter, μετα απο 10 χρόνια που ήταν ανενεργό.' 
     },
     { 
-      date: '2024-11-22', 
-      cmd: 'Cybersecurity Workshop Series', 
-      title: 'Security Fundamentals', 
-      desc: 'Launched a comprehensive 4-week workshop series covering web security, cryptography, and ethical hacking principles.' 
+      date: 'Απρίλιος 2025', 
+      cmd: 'Our First Event', 
+      title: 'Coming Soon...', 
+      desc: 'Περισσότερες πληροφορίες σύντομα!!' 
     },
     { 
-      date: '2024-12-10', 
-      cmd: 'Annual Hackathon 2024', 
-      title: 'Winter Hackathon', 
-      desc: '48-hour coding marathon with 20 teams competing. Winners built an AI-powered study assistant using machine learning.' 
+      date: 'Σεπτέμβριος 2025', 
+      cmd: 'Panhellenic ACM Chapters Joint Event', 
+      title: 'Coming Soon...', 
+      desc: 'Περισσότερες πληροφορίες σύντομα!!' 
     }
   ];
 
   const container = document.getElementById('timeline-events');
   
-  // NOTE: This return is now safely locked inside the initTimeline function!
   if (!container) return; 
 
   container.innerHTML = ''; 
@@ -112,10 +112,80 @@ function initTimeline() {
             <span class="status-tag">[PUSH OK]</span>
           </div>
         </div>
-        <h3 class="event-title">${event.title}</h3>
+        <h1 class="event-title">${event.title}</h1>
         <p class="event-description">${event.desc}</p>
       </div>
     `;
     container.appendChild(el);
   });
+}
+
+//STACKED CARDS //
+function initStackedCards() {
+  const cards = document.querySelectorAll('.stacked-card');
+  if (cards.length === 0) return;
+
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const indicators = document.querySelectorAll('.indicator');
+  let activeIndex = 0;
+
+  function updateCards() {
+    cards.forEach((card, index) => {
+
+      card.classList.remove('card-active', 'card-left', 'card-right');
+      let position = index - activeIndex;
+      if (position < -1) position += cards.length;
+      if (position > 1) position -= cards.length;
+      if (position === 0) {
+        card.classList.add('card-active');
+      } else if (position === -1) {
+        card.classList.add('card-left');
+      } else if (position === 1) {
+        card.classList.add('card-right');
+      }
+    });
+
+    indicators.forEach((ind, index) => {
+      ind.classList.toggle('active', index === activeIndex);
+    });
+  }
+
+  function nextCard() {
+    activeIndex = (activeIndex + 1) % cards.length;
+    updateCards();
+  }
+
+  function prevCard() {
+    activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+    updateCards();
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', nextCard);
+  if (prevBtn) prevBtn.addEventListener('click', prevCard);
+
+  indicators.forEach((ind, index) => {
+    ind.addEventListener('click', () => {
+      activeIndex = index;
+      updateCards();
+    });
+  });
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const slider = document.querySelector('.stacked-cards-container');
+  
+  if (slider) {
+    slider.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    slider.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) nextCard(); 
+      if (touchEndX - touchStartX > 50) prevCard(); 
+    }, { passive: true });
+  }
+
+  updateCards(); 
 }
