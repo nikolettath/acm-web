@@ -1,7 +1,7 @@
 :root {
   --color-space-black: #080303; 
-  --color-acm-red: #cc0000; 
-  --color-acm-bright: #ff6666; 
+  --color-acm-red: #96141c; /*#cc0000*/
+  --color-acm-bright: #c74246; /*#ff6666 */
   --text-primary: #ffffff;
   --text-dim: rgba(255, 255, 255, 0.8);
   --font-sans: 'Lexend', sans-serif;
@@ -15,15 +15,31 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--color-space-black);
-  background-image: linear-gradient(rgba(10, 2, 2, 0.75), rgba(5, 1, 1, 0.85)), url('/circuit_bg.svg'); 
+  background-image: linear-gradient(rgba(10, 2, 2, 0.4), rgba(5, 1, 1, 0.4)), url('/background for website.png'); 
   
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
+  /* --- ΟΙ ΔΙΟΡΘΩΣΕΙΣ ΓΙΑ ΤΗΝ ΕΙΚΟΝΑ --- */
+  background-size: 100% auto; /* Το 100% πιάνει όλο το πλάτος. Το auto προσαρμόζει το ύψος για να ΜΗΝ παραμορφώνεται η εικόνα */
+  background-repeat: repeat; /* Επειδή η σελίδα είναι μακριά, η εικόνα θα επαναλαμβάνεται ομαλά προς τα κάτω αντί να ξεχειλώνει */
+  background-attachment: scroll; /* Η εικόνα κινείται κανονικά μαζί με τη σελίδα */
+  background-position: top center;
+  
   color: var(--text-primary);
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* ΠΡΟΣΘΗΚΗ: Ο μηχανισμός που κάνει τα χρώματα του background να "ρέουν" αργά */
+@keyframes gradientBackground {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 /* ─── CUSTOM SCROLLBAR ─── */
@@ -299,4 +315,19 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
   .timeline-event:nth-child(odd), .timeline-event:nth-child(even) { justify-content: flex-end; text-align: left; }
   .timeline-event .event-content { width: calc(100% - 50px); }
   .timeline-event:nth-child(even) .command-box { flex-direction: row; }
+}
+
+/* --- Στυλ για την κεντρική εικόνα στο Hero Section --- */
+.image-btn img {
+  width: 500px; /* ΑΥΞΗΣΑΜΕ ΤΟ ΜΕΓΕΘΟΣ: Από 250px πήγε στα 500px. Μπορείς να βάλεις 600px ή 400px ανάλογα πώς σου αρέσει! */
+  max-width: 100%; /* ΠΡΟΣΘΗΚΗ: Πολύ σημαντικό για να μην βγαίνει εκτός οθόνης στα κινητά */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-btn:hover img {
+  transform: scale(1.05); /* Το hover effect παραμένει κανονικά! */
+  box-shadow: 0 15px 30px rgba(212, 83, 79, 0.6);
 }

@@ -78,13 +78,13 @@ function initTimeline() {
       desc: 'H επανίδρυση του ACM AUEB Student Chapter, μετα απο 10 χρόνια που ήταν ανενεργό.' 
     },
     { 
-      date: 'Απρίλιος 2025', 
+      date: 'Μάιος 2026', 
       cmd: 'Our First Event', 
       title: 'Coming Soon...', 
       desc: 'Περισσότερες πληροφορίες σύντομα!!' 
     },
     { 
-      date: 'Σεπτέμβριος 2025', 
+      date: 'Σεπτέμβριος 2026', 
       cmd: 'Panhellenic ACM Chapters Joint Event', 
       title: 'Coming Soon...', 
       desc: 'Περισσότερες πληροφορίες σύντομα!!' 
