@@ -1,7 +1,7 @@
 :root {
   --color-space-black: #080303; 
-  --color-acm-red: #96141c; /*#cc0000*/
-  --color-acm-bright: #c74246; /*#ff6666 */
+  --color-acm-red: #941019; /*#cc0000*/
+  --color-acm-bright: #ece1e2; /*#ff6666 */
   --text-primary: #ffffff;
   --text-dim: rgba(255, 255, 255, 0.8);
   --font-sans: 'Lexend', sans-serif;
@@ -276,7 +276,7 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 .join-content p { font-size: 1.1rem; color: var(--text-dim); font-weight: 600; }
 
 .btn-mega {
-  background: linear-gradient(135deg, var(--color-acm-red), var(--color-acm-bright));
+  background: linear-gradient(150deg, var(--color-acm-red), #ab3d3d/*var(--color-acm-bright)*/);
   color: white; padding: 1.5rem 3rem; border-radius: 50px;
   font-weight: 900; font-size: 1.1rem; letter-spacing: 2px; text-decoration: none;
   border-bottom: 4px solid rgba(0,0,0,0.3);
@@ -330,4 +330,23 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 .image-btn:hover img {
   transform: scale(1.05); /* Το hover effect παραμένει κανονικά! */
   box-shadow: 0 15px 30px rgba(212, 83, 79, 0.6);
+}
+
+/* --- Στοίχιση Εικονιδίων και Κειμένου στα Social Links --- */
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Το κενό ανάμεσα στο λογότυπο και τη λέξη */
+  transition: all 0.3s ease;
+}
+
+/* --- Προαιρετικό: Το εικονίδιο να αλλάζει χρώμα και να μεγαλώνει ελαφρώς στο hover --- */
+.social-link:hover svg {
+  stroke: var(--color-acm-bright);
+  transform: scale(1.1);
+}
+
+/* --- Αυτό είναι για να αλλάζει χρώμα το Discord στο hover --- */
+.social-link:hover .discord-icon {
+  fill: var(--color-acm-bright);
 }
