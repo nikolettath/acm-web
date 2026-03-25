@@ -350,3 +350,8 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 .social-link:hover .discord-icon {
   fill: var(--color-acm-bright);
 }
+
+/* --- Αφαίρεση της κόκκινης λάμψης από την κάρτα About --- */
+#about .orb-red {
+  display: none;
+}
