@@ -1,6 +1,6 @@
 # acm-web
 
-Simple Vite project.
+One-page Vite project.
 
 ## setup
 
