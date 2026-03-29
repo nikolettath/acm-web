@@ -1,7 +1,7 @@
 :root {
   --color-space-black: #080303; 
   --color-acm-red: #941019; /*#cc0000*/
-  --color-acm-bright: #ece1e2; /*#ff6666 */
+  /*--color-acm-bright: #ffffff; #ff6666 */
   --text-primary: #ffffff;
   --text-dim: rgba(255, 255, 255, 0.8);
   --font-sans: 'Lexend', sans-serif;
@@ -57,8 +57,8 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; }
 .text-center { text-align: center; }
 .mb-5 { margin-bottom: 2.5rem; }
 
-.accent { color: var(--color-acm-bright); }
-.section-label { font-size: 0.85rem; color: var(--color-acm-bright); letter-spacing: 2px; display: block; margin-bottom: 0.5rem; }
+.accent { color: var(--text-primary); }
+.section-label { font-size: 0.85rem; color: var(--text-primary); letter-spacing: 2px; display: block; margin-bottom: 0.5rem; }
 
 .glow-text { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(0, 0, 0, 0.5); }
 .accent.glow-text { text-shadow: 0 0 15px rgba(212, 83, 79, 0.5); }
@@ -80,14 +80,14 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 .nav-links a { text-decoration: none; color: var(--text-dim); font-weight: 400; transition: var(--transition); }
 .nav-links a.active, .nav-links a:hover { color: white; }
 .nav-cta { background: var(--color-acm-red); padding: 8px 20px; border-radius: 6px; text-decoration: none; color: white; font-weight: 600; transition: var(--transition); }
-.nav-cta:hover { background: var(--color-acm-bright); box-shadow: 0 0 15px rgba(212, 83, 79, 0.4); }
+.nav-cta:hover { background: rgb(212, 83, 79); box-shadow: 0 0 15px rgba(212, 83, 79, 0.4); }
 
 .hamburger { display: none; cursor: pointer; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 2px; background: white; margin: 4px 0; transition: 0.3s; }
 .mobile-menu { display: none; }
 
 /* ─── HERO SECTION ─── */
-.hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 100px; }
+.hero-section { min-height: 75vh; display: flex; align-items: center; justify-content: center; padding-top: 100px; }
 .hero-sub { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-dim); display: block; margin-top: 1rem; letter-spacing: 0; }
 .hero-tagline { font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--text-dim); font-weight: 600; margin-top: 2rem; }
 
@@ -104,7 +104,7 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
   transition: var(--transition);
 }
 .btn-hero:hover {
-  background: var(--color-acm-bright);
+  background: var(--text-primary);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(212, 83, 79, 0.4);
 }
@@ -150,7 +150,7 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
   background-color: var(--color-space-black); z-index: 2; 
   transition: var(--transition); transform: translateX(-50%); 
 }
-.timeline-event.active .timeline-node { background-color: var(--color-acm-bright); border-color: var(--color-acm-bright); box-shadow: 0 0 15px rgba(212, 83, 79, 0.6); }
+.timeline-event.active .timeline-node { background-color: var(--text-primary); border-color: var(--text-primary); box-shadow: 0 0 15px rgba(212, 83, 79, 0.6); }
 
 /* Left/Right Alternation */
 .timeline-event:nth-child(odd) { justify-content: flex-end; }
@@ -159,7 +159,7 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 
 /* Timeline Typography */
 .event-date { font-family: var(--font-mono); color: white; font-weight: 700; margin-bottom: 0.8rem; font-size: 1rem; }
-.event-title { font-size: 1.5rem; color: var(--color-acm-bright); margin: 1.5rem 0 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+.event-title { font-size: 1.5rem; color: var(--text-primary); margin: 1.5rem 0 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
 .event-description { color: var(--text-dim); line-height: 1.6; font-size: 0.95rem; }
 
 /* Command Box */
@@ -221,14 +221,14 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 
 .card-left {
   transform: translateX(-70%) scale(0.8) rotateY(15deg);
-  opacity: 0.4;
+  opacity: 0.7;
   z-index: 10;
   pointer-events: none;
 }
 
 .card-right {
   transform: translateX(70%) scale(0.8) rotateY(-15deg);
-  opacity: 0.4;
+  opacity: 0.7;
   z-index: 10;
   pointer-events: none;
 }
@@ -276,7 +276,7 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 .join-content p { font-size: 1.1rem; color: var(--text-dim); font-weight: 600; }
 
 .btn-mega {
-  background: linear-gradient(150deg, var(--color-acm-red), #ab3d3d/*var(--color-acm-bright)*/);
+  background: linear-gradient(150deg, var(--color-acm-red), #ab3d3d);
   color: white; padding: 1.5rem 3rem; border-radius: 50px;
   font-weight: 900; font-size: 1.1rem; letter-spacing: 2px; text-decoration: none;
   border-bottom: 4px solid rgba(0,0,0,0.3);
@@ -332,6 +332,7 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
   box-shadow: 0 15px 30px rgba(212, 83, 79, 0.6);
 }
 
+
 /* --- Στοίχιση Εικονιδίων και Κειμένου στα Social Links --- */
 .social-link {
   display: flex;
@@ -342,16 +343,25 @@ section { padding: clamp(4rem, 10vh, 8rem) 2rem; max-width: 1200px; margin: 0 au
 
 /* --- Προαιρετικό: Το εικονίδιο να αλλάζει χρώμα και να μεγαλώνει ελαφρώς στο hover --- */
 .social-link:hover svg {
-  stroke: var(--color-acm-bright);
+  stroke: var(--text-primary);
   transform: scale(1.1);
 }
 
 /* --- Αυτό είναι για να αλλάζει χρώμα το Discord στο hover --- */
 .social-link:hover .discord-icon {
-  fill: var(--color-acm-bright);
+  fill: var(--text-primary);
 }
 
 /* --- Αφαίρεση της κόκκινης λάμψης από την κάρτα About --- */
 #about .orb-red {
   display: none;
+}
+
+#hero {
+  padding-bottom: 1rem; 
+}
+
+/* Μειώνει το πάνω κενό από το about */
+#about {
+  padding-top: 1rem; 
 }
